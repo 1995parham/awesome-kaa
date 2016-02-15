@@ -11,4 +11,4 @@
 all: roadmap
 
 roadmap: adjcalc.sty adjustbox.sty collectbox.sty minted.sty trimclip.sty aut.sty roadmap.tex
-	xelatex -shell-escape roadmap.tex
+	xelatex -shell-escape -8bit roadmap.tex
