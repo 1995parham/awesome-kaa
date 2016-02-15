@@ -11,6 +11,7 @@
 \usepackage{ragged2e}
 \usepackage[export]{adjustbox}
 \usepackage{minted}
+\usemintedstyle{monokai}
 
 \usepackage{aut}
 
@@ -64,6 +65,72 @@
 	\frametitle{Architecture}
 	\vspace{.1cm}
 	\hspace*{.75cm} \includegraphics[width=10.5cm]{../architecture/architecture.jpg}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Outline}
+	\vspace{.1cm}
+	\begin{itemize}
+		\justifying
+		\item \textcolor{LightGray}{Architecture}
+		\item Simple IoT Management Protocol
+		\item \textcolor{LightGray}{Roadmap}
+	\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[fragile]
+	\frametitle{Simple IoT Management Protocol}
+	\begin{minted}
+		[
+			frame=lines,
+			obeytabs,
+			showtabs,
+			tabsize=4,
+			baselinestretch=1.2,
+			fontsize=\footnotesize,
+			bgcolor=LightGray,
+		]{json}
+{
+	"id": 1,
+	"type": "light",
+	"variables": [
+		{
+			"name": "light_intensity",
+			"type": "int",
+			"permission": "wr"
+		},
+	\end{minted}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[fragile]
+	\frametitle{Simple IoT Management Protocol}
+	\begin{minted}
+		[
+			frame=lines,
+			obeytabs,
+			showtabs,
+			tabsize=4,
+			baselinestretch=1.2,
+			fontsize=\footnotesize,
+			bgcolor=LightGray,
+		]{json}
+		{
+			"name": "reset",
+			"type": "func",
+			"parameters": [
+				{
+					"name": "interval",
+					"type": "int"
+				}
+			],
+			"retrun": "void"
+		}
+	]
+}
+	\end{minted}
 \end{frame}
 
 
