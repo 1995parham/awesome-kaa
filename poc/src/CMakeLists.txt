@@ -11,4 +11,4 @@ add_executable(PoC.out main.c)
 include_directories("${PoC_SOURCE_DIR}/libs/src")
 target_link_libraries(PoC.out kaac crypto)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 -g -Wall -Wextra")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 -g -Wall")
