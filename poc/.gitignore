@@ -40,3 +40,5 @@ build/
 
 # Kaa auto generated files
 libs/
+kaa_key.pub
+kaa_status.bin
