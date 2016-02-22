@@ -30,5 +30,5 @@ link_directories(${CMAKE_CURRENT_SOURCE_DIR}/build)
 
 set(SAMPLE_SOURCE_FILES src/main.c)
 
-add_executable(${APP_NAME} ${SAMPLE_SOURCE_FILES})
-target_link_libraries(${APP_NAME} kaac crypto)
+add_executable(poc.out ${SAMPLE_SOURCE_FILES})
+target_link_libraries(poc.out kaac crypto)
