@@ -6,14 +6,9 @@
 #
 # [] Created By : Parham Alvani (parham.alvani@gmail.com)
 # =======================================
-cmake_minimum_required(VERSION 2.8.8)
-project(PoC)
-enable_language(C)
+add_executable(PoC.out main.c)
 
-find_package(OpenSSL REQUIRED)
+include_directories("${PoC_SOURCE_DIR}/libs/src")
+target_link_libraries(PoC.out kaac crypto)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 -g -Wall -Wextra")
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
-
-add_subdirectory(libs)
-add_subdirectory(src)
