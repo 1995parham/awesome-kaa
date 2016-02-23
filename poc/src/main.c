@@ -55,26 +55,29 @@ int main(int argc, char *argv[])
 	KAA_RETURN_IF_ERROR(error_code, "Failed create Kaa client");
 
 	kaa_topic_listener_t topic_listener = {
-		on_topics_received,
-		kaa_client};
+		.callback = on_topics_received,
+		.context = NULL,
+	};
 	kaa_notification_listener_t notification_listener = {
-		on_notification,
-		kaa_client};
+		.callback = on_notification,
+		.context = NULL,
+	};
 
 	uint32_t topic_listener_id = 0;
 	uint32_t notification_listener_id = 0;
 
 
-	error_code = kaa_add_topic_list_listener(kaa_client_get_context(kaa_client)->notification_manager
-			, &topic_listener
-			, &topic_listener_id);
+	error_code = kaa_add_topic_list_listener(
+			kaa_client_get_context(kaa_client)->notification_manager,
+			&topic_listener,
+			&topic_listener_id);
 	KAA_RETURN_IF_ERROR(error_code, "Failed add topic listener");
 
 
-	error_code = kaa_add_notification_listener(kaa_client_get_context(kaa_client)->notification_manager
-			, &notification_listener
-			, &notification_listener_id);
-
+	error_code = kaa_add_notification_listener(
+			kaa_client_get_context(kaa_client)->notification_manager,
+			&notification_listener,
+			&notification_listener_id);
 	KAA_RETURN_IF_ERROR(error_code, "Failed add notification listener");
 
 	error_code = kaa_client_start(kaa_client, NULL, NULL, 0);
