@@ -1,0 +1,18 @@
+{
+  "type" : "record",
+  "name" : "delete_notification",
+  "namespace" : "ir.ac.aut.aolab.delete",
+  "fields" : [ {
+    "name" : "path",
+    "type" : {
+      "type" : "string",
+      "avro.java.string" : "String"
+    },
+    "displayName" : "Path",
+    "displayPrompt" : "Path",
+    "by_default" : "/home/parham/test.txt",
+    "maxLength" : 1024,
+    "inputType" : "plain"
+  } ],
+  "displayName" : "Delete Notification"
+}
