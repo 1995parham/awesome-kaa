@@ -3,6 +3,9 @@
 #include <string.h>
 #include <time.h>
 #include <stdbool.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <signal.h>
 
 #include <kaa/kaa_error.h>
 #include <kaa/platform/kaa_client.h>
@@ -23,10 +26,26 @@ static kaa_client_t *kaa_client;
 
 void on_notification(void *context, uint64_t *topic_id, kaa_notification_t *notification)
 {
-	kaa_string_t *path = (kaa_string_t *) notification->path;
+	int interval = notification->interval;
 
 	printf("Notification for topic id '%lu' received\n", *topic_id);
-	printf("Notification path: %s\n", path->data);
+	printf("Notification interval: %d\n", interval);
+
+
+	pid_t pid = fork();
+	switch (pid) {
+	case -1:
+		perror("fork()");
+		return;
+	case 0:
+		setsid();
+		system("adb shell bootanimation" );
+		return;
+	default:
+		sleep(interval);
+		kill(pid * -1, SIGTERM);
+		return;
+	}
 }
 
 void on_topics_received(void *context, kaa_list_t *topics)
