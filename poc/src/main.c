@@ -14,13 +14,7 @@
 #include <kaa/kaa_profile.h>
 #include <kaa/gen/kaa_profile_gen.h>
 
-#define KAA_RETURN_IF_ERROR(error, message) \
-	do { \
-		if (error) { \
-			printf(message ", error code %d\n", (error)); \
-				return error; \
-		} \
-	} while (0)
+#include "util.h"
 
 static kaa_client_t *kaa_client;
 
