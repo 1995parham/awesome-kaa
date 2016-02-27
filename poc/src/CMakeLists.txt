@@ -6,7 +6,8 @@
 #
 # [] Created By : Parham Alvani (parham.alvani@gmail.com)
 # =======================================
-add_executable(PoC.out main.c)
+add_executable(PoC.out main.c
+	util.h)
 
 include_directories("${PoC_SOURCE_DIR}/libs/src")
 target_link_libraries(PoC.out kaac crypto)
