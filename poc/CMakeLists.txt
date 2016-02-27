@@ -15,8 +15,5 @@ find_package(OpenSSL REQUIRED)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 -g -Wall")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 
-set(KAA_SERVER "localhost:8080")
-set(KAA_APP_NO "440")
-
 add_subdirectory(libs)
 add_subdirectory(src)
