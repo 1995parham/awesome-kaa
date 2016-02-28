@@ -9,7 +9,8 @@
 add_executable(Parham.out main.c
 	util.h
 	notification.h notification.c
-	event.h event.c)
+	event.h event.c
+	user.h user.c)
 
 include_directories("${Parham_SOURCE_DIR}/libs/src")
 target_link_libraries(Parham.out kaac crypto)
