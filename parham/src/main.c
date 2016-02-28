@@ -54,8 +54,8 @@ int main(int argc, char *argv[])
 	
 	attach_endpoint_to_user(
 			kaa_client_get_context(kaa_client)->user_manager,
-			"Parham",
-			"Parham");
+			"",
+			"");
 	KAA_RETURN_IF_ERROR(error_code, "Failed to attach to the user");
 
 	error_code = kaa_client_start(kaa_client, NULL, NULL, 0);
