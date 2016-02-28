@@ -34,7 +34,7 @@ static void on_led_event_class_family_led_on_event(void *context,
 	event->destroy(event);
 }
 
-int kaa_event_register(kaa_event_manager_t *manager)
+kaa_error_t kaa_event_register(kaa_event_manager_t *manager)
 {
 	kaa_error_t error_code;
 	

@@ -65,7 +65,7 @@ static void on_topics_received(void *context, kaa_list_t *topics)
 }
 
 
-int kaa_notification_register(kaa_notification_manager_t *manager)
+kaa_error_t kaa_notification_register(kaa_notification_manager_t *manager)
 {
 	kaa_error_t error_code;
 
