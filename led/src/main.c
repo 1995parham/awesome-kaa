@@ -12,6 +12,7 @@
 #include <kaa/platform/ext_event_listeners_callback.h>
 
 #include "util.h"
+#include "user.h"
 
 static kaa_client_t *kaa_client;
 
@@ -36,11 +37,19 @@ int main(int argc, char *argv[])
 
 	error_code = kaa_client_create(&kaa_client, NULL);
 	KAA_RETURN_IF_ERROR(error_code, "Failed create Kaa client");
+
+	/* Attach to user :) */
 	
+	error_code = attach_endpoint_to_user(
+			kaa_client_get_context(kaa_client)->user_manager,
+			"LED",
+			"LED");
+	KAA_RETURN_IF_ERROR(error_code, "Failed to attach to the user");
+
+	/* Find endpoint by event FQDN */
 	
 	const char *fqns[] = {"ir.ac.aut.aolab.led.led_on_event"};
 	
-
 	kaa_event_listeners_callback_t callback = {NULL, event_listeners_callback, event_listeners_request_failed};
 	
 	error_code = kaa_event_manager_find_event_listeners(kaa_client_get_context(kaa_client)->event_manager
