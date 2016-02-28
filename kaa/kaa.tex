@@ -145,8 +145,10 @@
 \begin{frame}
 	\frametitle{Messaging across endpoints}
 	\begin{itemize}
+		\item Kaa allows for delivery of events, which are structured messages,
+			\textcolor{TextOrange}{across endpoints}.
 		\item The event class family can be used by one or multiple applications,
-			thus the \textcolor{TextOrange}{event can be shared between applications}.
+			thus the \textcolor{TextGreen}{event can be shared between applications}.
 	\end{itemize}
 \end{frame}
 
@@ -158,8 +160,27 @@
 
 %------------------------------------------------
 \begin{frame}
+	\frametitle{Notification}
+	\begin{itemize}
+		\item Kaa uses notifications to distribute structured messages,
+			posted within notification topics,
+			from the \textcolor{TextOrange}{server} to \textcolor{TextGreen}{endpoints}.
+	\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
 	\frametitle{Collecting data from endpoints}
 	\centering\includegraphics[width=5cm]{figs/collecting_data.png}
 \end{frame}
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Collecting data from endpoints}
+	\begin{itemize}
+		\item Kaa provides rich capabilities for
+			\textcolor{Ocean}{collecting} and \textcolor{TextOrange}{storing} structured data from endpoints.
+	\end{itemize}
+\end{frame}
+
 
 \end{document}
