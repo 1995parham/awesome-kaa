@@ -12,6 +12,7 @@
 
 #include "util.h"
 #include "notification.h"
+#include "event.h"
 
 static kaa_client_t *kaa_client;
 
@@ -31,6 +32,12 @@ int main(int argc, char *argv[])
 			kaa_client_get_context(kaa_client)->notification_manager);
 	KAA_RETURN_IF_ERROR(error_code, "Failed to register notification");
 	
+	/* Build event related things */
+
+	error_code = kaa_event_register(
+			kaa_client_get_context(kaa_client)->event_manager);
+	KAA_RETURN_IF_ERROR(error_code, "Failed to register event");
+
 	/* Build profile related things */
 
 	kaa_profile_t *profile = kaa_profile_parham_create();
