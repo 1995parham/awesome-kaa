@@ -15,6 +15,8 @@
 #ifndef EVENT_H
 #define EVENT_H
 
-int kaa_event_register(kaa_event_manager_t *manager);
+#include <kaa/kaa_error.h>
+
+kaa_error_t kaa_event_register(kaa_event_manager_t *manager);
 
 #endif
