@@ -23,4 +23,13 @@
 		} \
 	} while (0)
 
+#define KAA_EXIT_IF_ERROR(error, message) \
+	do { \
+		if (error) { \
+			printf(message ", error code %d\n", (error)); \
+				return; \
+		} \
+	} while (0)
+
+
 #endif
