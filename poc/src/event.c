@@ -23,6 +23,15 @@
 static void on_led_event_class_family_led_on_event(void *context,
 		kaa_led_event_class_family_led_on_event_t *event, kaa_endpoint_id_p source)
 {
+	int r, g, b;
+	
+	r = event->red;
+	g = event->green;
+	b = event->blue;
+
+	printf("%d %d %d\n", r, g, b);
+
+	event->destroy(event);
 }
 
 int kaa_event_register(kaa_event_manager_t *manager)
