@@ -22,7 +22,22 @@ kaa_error_t event_listeners_callback(void *context, const kaa_endpoint_id listen
 	
 	printf("Event Listerners: %zd\n", listeners_count);
 	for (i = 0; i < listeners_count; i++) {
-		printf("%s\n", listeners[i]);
+		kaa_error_t error_code;
+		
+		/* Create and send an event */
+	
+		kaa_led_event_class_family_led_on_event_t* led_on_request = kaa_led_event_class_family_led_on_event_create();
+		led_on_request->red = 10;
+		led_on_request->green = 20;
+		led_on_request->blue = 30;
+	
+		error_code = kaa_event_manager_send_kaa_led_event_class_family_led_on_event(kaa_client_get_context(kaa_client)->event_manager
+				, led_on_request
+				, listeners[i]);
+		KAA_RETURN_IF_ERROR(error_code, "Failed to send LEDOnEvent");
+	
+		led_on_request->destroy(led_on_request);
+
 	}
 
 	return KAA_ERR_NONE;
@@ -49,21 +64,7 @@ void external_process(void *context)
 			, fqns
 			, 1
 			, &callback);
-	KAA_EXIT_IF_ERROR(error_code, "Failed to attach event listener");
-	
-	/* Create and send an event */
-	
-	kaa_led_event_class_family_led_on_event_t* led_on_request = kaa_led_event_class_family_led_on_event_create();
-	led_on_request->red = 10;
-	led_on_request->green = 20;
-	led_on_request->blue = 30;
-	
-	error_code = kaa_event_manager_send_kaa_led_event_class_family_led_on_event(kaa_client_get_context(kaa_client)->event_manager
-			, led_on_request
-			, NULL);
-	KAA_EXIT_IF_ERROR(error_code, "Failed to send LEDOnEvent");
-	
-	led_on_request->destroy(led_on_request);
+	KAA_EXIT_IF_ERROR(error_code, "Failed to attach event listener");	
 }
 
 int main(int argc, char *argv[])
@@ -80,11 +81,11 @@ int main(int argc, char *argv[])
 	
 	error_code = attach_endpoint_to_user(
 			kaa_client_get_context(kaa_client)->user_manager,
-			"LED",
-			"LED");
+			"",
+			"");
 	KAA_RETURN_IF_ERROR(error_code, "Failed to attach to the user");
 
-	error_code = kaa_client_start(kaa_client, external_process, NULL, 0);
+	error_code = kaa_client_start(kaa_client, external_process, NULL, 1);
 	KAA_RETURN_IF_ERROR(error_code, "Failed to start Kaa main loop");
 
 	kaa_client_destroy(kaa_client);
