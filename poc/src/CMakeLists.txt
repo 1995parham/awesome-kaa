@@ -8,7 +8,8 @@
 # =======================================
 add_executable(PoC.out main.c
 	util.h
-	notification.h notification.c)
+	notification.h notification.c
+	event.h event.c)
 
 include_directories("${PoC_SOURCE_DIR}/libs/src")
 target_link_libraries(PoC.out kaac crypto)
