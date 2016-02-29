@@ -18,27 +18,24 @@ static kaa_client_t *kaa_client;
 
 kaa_error_t event_listeners_callback(void *context, const kaa_endpoint_id listeners[], size_t listeners_count)
 {
-	int i;
-	
 	printf("Event Listerners: %zd\n", listeners_count);
-	for (i = 0; i < listeners_count; i++) {
-		kaa_error_t error_code;
+	
+	kaa_error_t error_code;
 		
-		/* Create and send an event */
+	/* Create and send an event */
 	
-		kaa_led_event_class_family_led_on_event_t* led_on_request = kaa_led_event_class_family_led_on_event_create();
-		led_on_request->red = 10;
-		led_on_request->green = 20;
-		led_on_request->blue = 30;
+	kaa_led_event_class_family_led_on_event_t* led_on_request = kaa_led_event_class_family_led_on_event_create();
+	led_on_request->red = 10;
+	led_on_request->green = 20;
+	led_on_request->blue = 30;
 	
-		error_code = kaa_event_manager_send_kaa_led_event_class_family_led_on_event(kaa_client_get_context(kaa_client)->event_manager
-				, led_on_request
-				, listeners[i]);
-		KAA_RETURN_IF_ERROR(error_code, "Failed to send LEDOnEvent");
+	error_code = kaa_event_manager_send_kaa_led_event_class_family_led_on_event(kaa_client_get_context(kaa_client)->event_manager
+			, led_on_request
+			, NULL);
+	KAA_RETURN_IF_ERROR(error_code, "Failed to send LEDOnEvent");
 	
-		led_on_request->destroy(led_on_request);
+	led_on_request->destroy(led_on_request);
 
-	}
 
 	return KAA_ERR_NONE;
 }
