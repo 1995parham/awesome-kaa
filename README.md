@@ -1,8 +1,3 @@
 # Kaa101
 ## Introduction
-Let's learn kaa by example.
-
-## Kaa Agent
-1. Kaa Installation
-
-## Temperature Sensor
+Let's learn kaa by example. provide each example in `example` folder.
