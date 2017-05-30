@@ -8,4 +8,3 @@ add_subdirectory(kaa)
 add_executable(kaa-app main.c)
 
 target_link_libraries(kaa-app kaac)
-
