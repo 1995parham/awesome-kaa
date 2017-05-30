@@ -1,0 +1,11 @@
+ {
+     "type": "record",
+     "name": "DataCollection",
+     "namespace": "org.kaaproject.kaa.schema.camera",
+     "fields": [
+         {
+             "name": "plate",
+             "type": "string"
+         }
+     ]
+ }

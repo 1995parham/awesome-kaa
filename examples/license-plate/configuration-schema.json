@@ -1,0 +1,8 @@
+ {
+     "type": "record",
+     "name": "Configuration",
+     "namespace": "org.kaaproject.kaa.schema.sample",
+     "fields": [
+
+     ]
+ }
