@@ -1,10 +1,12 @@
-cmake_minimum_required(VERSION 2.8.12)
-project(kaa-application C)
+cmake_minimum_required(VERSION 2.8.8)
+project(license-plate)
+enable_language(C)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 -g -Wall -Wextra")
+find_package(OpenSSL REQUIRED)
+find_package(Threads REQUIRED)
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 -g -Wall")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 
 add_subdirectory(kaa)
-
-add_executable(kaa-app main.c)
-
-target_link_libraries(kaa-app kaac)
+add_subdirectory(src)
