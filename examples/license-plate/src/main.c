@@ -17,8 +17,7 @@
 
 extern kaa_error_t ext_unlimited_log_storage_create(void **log_storage_context_p, kaa_logger_t *logger);
 
-/* Periodically called by Kaa SDK. */
-static void example_callback(void *context)
+static void plate_callback(void *context)
 {
 
         kaa_string_t plate;
@@ -88,11 +87,11 @@ int main(int argc, char *argv[])
     if (error) {
         return EXIT_FAILURE;
     }
-    
+
     pthread_t thread;
     pthread_create(&thread, NULL, kaa_thread, kaa_client);
     sleep(1);
-    example_callback(kaa_client);
+    plate_callback(kaa_client);
 
 
     return EXIT_SUCCESS;
