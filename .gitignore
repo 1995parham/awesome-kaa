@@ -59,9 +59,3 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-
-# Kaa
-kaa/
-
-# Build
-build/
