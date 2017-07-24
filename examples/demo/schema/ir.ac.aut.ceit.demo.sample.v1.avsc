@@ -1,0 +1,15 @@
+{
+  "type" : "record",
+  "name" : "sample",
+  "namespace" : "ir.ac.aut.ceit.demo",
+  "fields" : [ {
+    "name" : "number",
+    "type" : "int",
+    "displayName" : "",
+    "displayPrompt" : "",
+    "by_default" : 1373
+  } ],
+  "version" : 1,
+  "displayName" : "sample",
+  "description" : "sample is a sample"
+}
