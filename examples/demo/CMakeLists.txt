@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8.8)
 project(demo)
 enable_language(C)
 
+=======
 find_package(Threads REQUIRED)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 -g -Wall")
