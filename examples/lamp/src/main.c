@@ -1,19 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <unistd.h>
+#include <wiringPi.h>
+
 #include <kaa.h>
 #include <platform/kaa_client.h>
 #include <extensions/notification/kaa_notification_manager.h>
 #include <kaa/platform/ext_notification_receiver.h>
-#include <unistd.h>
+
 
 static void on_notification(void *context, uint64_t *topic_id, kaa_notification_t *notification)
 {
-	printf("Received notification on topic %llu: message=%d\n", *topic_id, notification->turn);
+	printf("Received notification on topic %llu: message=%d\n", *topic_id, notification->on);
+
+	if (notification->on) {
+		digitalWrite(8, HIGH);
+	} else {
+		digitalWrite(8, LOW);
+	}
 }
 
 int main(int argc, char *argv[])
 {
+	wiringPiSetup();
+	pinMode(8, OUTPUT);
+	
+
 	/* Prepare Kaa client. */
 	kaa_client_t *kaa_client = NULL;
 	kaa_error_t error = kaa_client_create(&kaa_client, NULL);
